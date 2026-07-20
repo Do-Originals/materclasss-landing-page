@@ -164,11 +164,11 @@ export function Hero() {
   }`;
 
   return (
-    <section id="register" ref={containerRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-surface-dark text-white">
+    <section id="register" ref={containerRef} className="relative pt-24 pb-16 lg:pt-40 lg:pb-28 overflow-hidden bg-surface-dark text-white">
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-surface-dark to-surface-dark pointer-events-none"></div>
       
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-center">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl relative z-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-12 items-center">
           
           <div ref={leftContentRef} className="flex-1 space-y-8">
             <div className="inline-flex items-center rounded-full border border-brand-magenta/50 bg-brand-magenta/10 px-4 py-1.5 text-sm font-medium text-brand-magenta shadow-[0_0_15px_rgba(230,0,122,0.5)] animate-pulse">
@@ -179,11 +179,11 @@ export function Hero() {
               {siteContent.hero.eyebrow}
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight leading-[1.1] font-heading">
+            <h1 className="text-[2.5rem] leading-[1.15] sm:text-5xl lg:text-[4rem] font-bold tracking-tight lg:leading-[1.1] font-heading">
               {siteContent.hero.headline}
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-medium">
               {siteContent.hero.subheadline}
             </p>
             
@@ -191,36 +191,36 @@ export function Hero() {
               {siteContent.registrationHook.text}
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 max-w-lg">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col justify-center shadow-inner">
-                <span className="text-white/60 text-xs uppercase font-medium tracking-wider mb-1">Time</span>
-                <span className="text-white font-semibold text-lg">10 Sessions</span>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4 max-w-lg">
+              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner">
+                <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Time</span>
+                <span className="text-white font-semibold text-sm sm:text-lg">10 Sessions</span>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col justify-center shadow-inner relative overflow-hidden">
-                 <span className="text-white/60 text-xs uppercase font-medium tracking-wider mb-1">Online</span>
-                 <span className="text-white font-semibold text-lg">Live Cohort</span>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner relative overflow-hidden">
+                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Online</span>
+                 <span className="text-white font-semibold text-sm sm:text-lg">Live Cohort</span>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col justify-center shadow-inner sm:col-span-2">
-                 <span className="text-white/60 text-xs uppercase font-medium tracking-wider mb-1">Price</span>
-                 <span className="text-white font-semibold text-lg">₹4999 incl. GST</span>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner col-span-2">
+                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Price</span>
+                 <span className="text-white font-semibold text-base sm:text-lg">₹4999 incl. GST</span>
               </div>
             </div>
           </div>
 
-          <div ref={formRef} className="w-full max-w-[500px] shrink-0 relative flex flex-col justify-end mt-12 lg:mt-0 lg:ml-8">
+          <div ref={formRef} className="w-full max-w-[500px] shrink-0 relative flex flex-col justify-end mt-8 lg:mt-0 lg:ml-8">
             {/* Mentor Image */}
-            <div className="w-full flex justify-center lg:justify-end -mb-20 lg:-mb-24 relative z-0 pointer-events-none">
+            <div className="w-full flex justify-center lg:justify-end -mb-16 sm:-mb-20 lg:-mb-24 relative z-0 pointer-events-none">
               <img 
                 src="/mentor.png" 
                 alt="" 
-                className="w-[90%] lg:w-[115%] max-h-[450px] lg:max-h-[500px] h-auto object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-none lg:w-[115%] max-h-[380px] sm:max-h-[450px] lg:max-h-[500px] h-auto object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
               />
             </div>
 
-            <div className="bg-[#132341] border border-white/20 rounded-2xl p-5 md:p-6 shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative z-10 transition-all duration-500">
+            <div className="bg-[#132341] border border-white/20 rounded-2xl p-4 sm:p-5 md:p-6 shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative z-10 transition-all duration-500">
               
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-10 text-center space-y-4 animate-in fade-in zoom-in duration-500">
@@ -316,7 +316,7 @@ export function Hero() {
                     <Button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="w-full py-5 text-base font-semibold bg-brand-magenta hover:bg-brand-magenta/90 text-white rounded-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.4)] hover:shadow-[0_0_30px_rgba(230,0,122,0.6)] border-0 disabled:opacity-70 disabled:hover:shadow-[0_0_20px_rgba(230,0,122,0.4)] relative overflow-hidden"
+                      className="w-full py-4 sm:py-5 text-sm sm:text-base font-semibold bg-brand-magenta hover:bg-brand-magenta/90 text-white rounded-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.4)] hover:shadow-[0_0_30px_rgba(230,0,122,0.6)] border-0 disabled:opacity-70 disabled:hover:shadow-[0_0_20px_rgba(230,0,122,0.4)] relative overflow-hidden"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">

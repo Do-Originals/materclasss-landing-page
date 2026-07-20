@@ -69,7 +69,7 @@ export const siteContent = {
     heading: "Know Your Mentors",
     list: [
       {
-        name: "[PLACEHOLDER: Mentor 1 Name]",
+        name: "Vikrant Nalawade",
         bio: "[PLACEHOLDER: 2-3 line mentor 1 bio goes here. Highlight industry experience and achievements.]",
         image: "https://placehold.co/300x300?text=Mentor+1",
         stats: [
@@ -79,7 +79,7 @@ export const siteContent = {
         ],
       },
       {
-        name: "[PLACEHOLDER: Mentor 2 Name]",
+        name: "Omkar Potphode",
         bio: "[PLACEHOLDER: 2-3 line mentor 2 bio goes here. Highlight industry experience and achievements.]",
         image: "https://placehold.co/300x300?text=Mentor+2",
         stats: [
@@ -102,7 +102,7 @@ export const siteContent = {
   certificate: {
     heading: "Get Certified",
     description: "Earn a certificate upon completion.",
-    issuer: "[PLACEHOLDER: Issuing Body Name]",
+    issuer: "Do Originals",
     image: "https://placehold.co/600x400?text=Certificate+Mockup",
   },
   faq: {
