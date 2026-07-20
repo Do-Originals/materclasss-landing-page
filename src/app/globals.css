@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: #FAFAFA;
+  --color-surface-dark: #0A1428;
+  --color-brand-magenta: #E6007A;
+  --color-gradient-start: #FF3366;
+  --color-gradient-end: #9B3BE0;
+  --color-text: #0A1428;
+  --color-text-light: #FAFAFA;
+  
+  --font-sans: var(--font-inter), var(--font-noto-sans-devanagari), sans-serif;
+  --font-heading: var(--font-inter), var(--font-noto-sans-devanagari), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+  }
+
+  .glass-card-dark {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .animate-cta-shake {
+    animation: cta-shake 4s cubic-bezier(.36,.07,.19,.97) infinite;
+    transform-origin: center;
+    display: inline-block;
+  }
+  
+  .animate-cta-flash {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .animate-cta-flash::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: cta-flash 4s infinite ease-in-out;
+    z-index: 10;
+    pointer-events: none;
+  }
+}
+
+@keyframes cta-shake {
+  0%, 80%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  83% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  86% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  89% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  92% {
+    transform: translateX(3px) rotate(2deg);
+  }
+}
+
+@keyframes cta-flash {
+  0%, 70% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
 }
