@@ -9,6 +9,7 @@ import { CheckCircle2 } from "lucide-react";
 
 type FormState = {
   name: string;
+  email: string;
   phone: string;
   age: string;
   location: string;
@@ -25,6 +26,7 @@ export function Hero() {
 
   const [formData, setFormData] = useState<FormState>({
     name: "",
+    email: "",
     phone: "",
     age: "",
     location: "",
@@ -67,6 +69,10 @@ export function Hero() {
       case "name":
         if (!value.trim()) return "Name is required";
         if (value.trim().length < 2) return "Name is too short";
+        return "";
+      case "email":
+        if (!value.trim()) return "Email is required";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Enter a valid email address";
         return "";
       case "phone":
         if (!value.trim()) return "Phone is required";
@@ -160,6 +166,7 @@ export function Hero() {
         order_id: data.order_id,
         prefill: {
           name: formData.name,
+          email: formData.email,
           contact: formData.phone,
         },
         handler: async function (response: any) {
@@ -305,6 +312,21 @@ export function Hero() {
                     </div>
                     <div>
                       <input 
+                        type="email" 
+                        id="email" 
+                        value={formData.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={inputClass("email")} 
+                        placeholder="Email Address*" 
+                      />
+                      {errors.email && touched.email && <p className="text-red-400 text-xs mt-1 absolute">{errors.email}</p>}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <input 
                         type="tel" 
                         id="phone" 
                         value={formData.phone}
@@ -315,9 +337,6 @@ export function Hero() {
                       />
                       {errors.phone && touched.phone && <p className="text-red-400 text-xs mt-1 absolute">{errors.phone}</p>}
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
                       <input 
                         type="number" 
@@ -330,6 +349,9 @@ export function Hero() {
                       />
                       {errors.age && touched.age && <p className="text-red-400 text-xs mt-1 absolute">{errors.age}</p>}
                     </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
                       <input 
                         type="text" 
@@ -342,9 +364,6 @@ export function Hero() {
                       />
                       {errors.location && touched.location && <p className="text-red-400 text-xs mt-1 absolute">{errors.location}</p>}
                     </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
                       <input 
                         type="text" 
@@ -357,17 +376,18 @@ export function Hero() {
                       />
                       {errors.profession && touched.profession && <p className="text-red-400 text-xs mt-1 absolute">{errors.profession}</p>}
                     </div>
-                    <div>
-                      <input 
-                        type="text" 
-                        id="reference" 
-                        value={formData.reference}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={inputClass("reference")} 
-                        placeholder="Reference (Optional)" 
-                      />
-                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <input 
+                      type="text" 
+                      id="reference" 
+                      value={formData.reference}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={inputClass("reference")} 
+                      placeholder="Reference (Optional)" 
+                    />
                   </div>
                   
                   <div className="pt-6">
