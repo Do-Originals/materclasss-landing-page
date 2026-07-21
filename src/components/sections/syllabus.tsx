@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteContent } from "@/content/copy";
+import { CheckoutButton } from "@/components/payment/CheckoutButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,12 +78,10 @@ export function Syllabus() {
         </div>
 
         <div className="mt-16 text-center relative z-20">
-          <a 
-            href="#register" 
-            className="animate-cta-shake animate-cta-flash inline-block bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]"
-          >
-            Claim Your Seat for ₹4999
-          </a>
+          <CheckoutButton 
+            text="Claim Your Seat"
+            className="animate-cta-shake animate-cta-flash inline-flex bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]"
+          />
         </div>
       </div>
     </section>

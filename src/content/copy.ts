@@ -6,7 +6,7 @@ export const siteContent = {
     cta: "Book Your Seat",
   },
   qualifierGrid: {
-    heading: "हा कोर्स तुमच्यासाठी का आहे — 4999/-",
+    heading: "हा कोर्स तुमच्यासाठी का आहे",
     bullets: [
       "आजच्या काळातील In-Demand Digital Skills शिकण्यासाठी",
       "AI Tools चा Practical वापर शिकण्यासाठी",
@@ -117,7 +117,7 @@ export const siteContent = {
     ],
   },
   finalCta: {
-    heading: "₹4999/- मध्ये तुमचा करिअरचा प्रवास सुरू करा.",
+    heading: "तुमचा करिअरचा प्रवास सुरू करा.",
     subheading: "Limited Seats · Live Cohort",
     cta: "Book Your Seat",
   },

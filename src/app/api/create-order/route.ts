@@ -7,8 +7,16 @@ const WEBINAR_PRICE_PAISE = 499900; // Rs. 4999
 
 export async function POST(req: NextRequest) {
   try {
-    // If client sends an amount, it is ignored. We only use the server-side constant.
-    const amount = WEBINAR_PRICE_PAISE;
+    const body = await req.json().catch(() => ({}));
+    
+    let amount = 499900;
+    if (body.amount) {
+      amount = parseInt(body.amount, 10);
+      if (amount !== 499900 && amount !== 99900) {
+        amount = 499900; // fallback to default if invalid
+      }
+    }
+    
     const currency = "INR";
     const receipt = `receipt_${Date.now()}`; // Unique receipt ID
 

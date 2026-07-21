@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CheckoutButton } from "@/components/payment/CheckoutButton";
 
 export function Header() {
   return (
@@ -15,12 +16,10 @@ export function Header() {
             unoptimized={true}
           />
         </Link>
-        <Link 
-          href="#register" 
-          className="animate-cta-shake animate-cta-flash bg-brand-magenta hover:bg-brand-magenta/90 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all shadow-[0_0_15px_rgba(230,0,122,0.3)] hover:shadow-[0_0_25px_rgba(230,0,122,0.5)]"
-        >
-          Book Your Seat
-        </Link>
+        <CheckoutButton 
+          text="Book Your Seat"
+          className="animate-cta-shake animate-cta-flash bg-brand-magenta hover:bg-brand-magenta/90 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all shadow-[0_0_15px_rgba(230,0,122,0.3)] hover:shadow-[0_0_25px_rgba(230,0,122,0.5)] border-0 h-auto"
+        />
       </div>
     </header>
   );
