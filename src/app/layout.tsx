@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_Devanagari } from "next/font/google";
+import { Hind } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const notoSansDevanagari = Noto_Sans_Devanagari({
-  variable: "--font-noto-sans-devanagari",
+const hind = Hind({
+  variable: "--font-hind",
   subsets: ["devanagari", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${notoSansDevanagari.variable} antialiased scroll-smooth`}
+      className={`${hind.variable} antialiased scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col font-sans text-text bg-bg selection:bg-brand-magenta selection:text-white">
         {children}

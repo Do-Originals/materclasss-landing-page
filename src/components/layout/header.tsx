@@ -12,13 +12,14 @@ export function Header() {
             fill
             className="object-contain object-left"
             priority
+            unoptimized={true}
           />
         </Link>
         <Link 
           href="#register" 
           className="animate-cta-shake animate-cta-flash bg-brand-magenta hover:bg-brand-magenta/90 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all shadow-[0_0_15px_rgba(230,0,122,0.3)] hover:shadow-[0_0_25px_rgba(230,0,122,0.5)]"
         >
-          Book Session
+          Book Your Seat
         </Link>
       </div>
     </header>

@@ -9,8 +9,8 @@
   --color-text: #0A1428;
   --color-text-light: #FAFAFA;
   
-  --font-sans: var(--font-inter), var(--font-noto-sans-devanagari), sans-serif;
-  --font-heading: var(--font-inter), var(--font-noto-sans-devanagari), sans-serif;
+  --font-sans: var(--font-hind), sans-serif;
+  --font-heading: var(--font-hind), sans-serif;
 }
 
 body {

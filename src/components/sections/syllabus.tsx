@@ -81,7 +81,7 @@ export function Syllabus() {
             href="#register" 
             className="animate-cta-shake animate-cta-flash inline-block bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]"
           >
-            Claim Your Spot for ₹4999
+            Claim Your Seat for ₹4999
           </a>
         </div>
       </div>

@@ -3,7 +3,7 @@ export const siteContent = {
     eyebrow: "Live · 10 Sessions · ₹4999/-",
     headline: "Digital Marketing Master Class",
     subheadline: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या",
-    cta: "Book Your Personal Session",
+    cta: "Book Your Seat",
   },
   qualifierGrid: {
     heading: "हा कोर्स तुमच्यासाठी का आहे — 4999/-",
@@ -71,7 +71,7 @@ export const siteContent = {
       {
         name: "Vikrant Nalawade",
         bio: "[PLACEHOLDER: 2-3 line mentor 1 bio goes here. Highlight industry experience and achievements.]",
-        image: "https://placehold.co/300x300?text=Mentor+1",
+        image: "/vikrant1.jpeg",
         stats: [
           { icon: "briefcase", label: "[PLACEHOLDER: X+ Years Experience]" },
           { icon: "award", label: "[PLACEHOLDER: X+ Crores Ad Spend]" },
@@ -81,7 +81,7 @@ export const siteContent = {
       {
         name: "Omkar Potphode",
         bio: "[PLACEHOLDER: 2-3 line mentor 2 bio goes here. Highlight industry experience and achievements.]",
-        image: "https://placehold.co/300x300?text=Mentor+2",
+        image: "/omkar.jpg",
         stats: [
           { icon: "briefcase", label: "[PLACEHOLDER: X+ Years Experience]" },
           { icon: "award", label: "[PLACEHOLDER: X+ Crores Ad Spend]" },
@@ -103,7 +103,7 @@ export const siteContent = {
     heading: "Get Certified",
     description: "Earn a certificate upon completion.",
     issuer: "Do Originals",
-    image: "https://placehold.co/600x400?text=Certificate+Mockup",
+    image: "/certificate.png",
   },
   faq: {
     heading: "Frequently Asked Questions",
@@ -119,6 +119,6 @@ export const siteContent = {
   finalCta: {
     heading: "₹4999/- मध्ये तुमचा करिअरचा प्रवास सुरू करा.",
     subheading: "Limited Seats · Live Cohort",
-    cta: "Book Your Personal Session",
+    cta: "Book Your Seat",
   },
 };

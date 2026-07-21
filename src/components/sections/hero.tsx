@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { siteContent } from "@/content/copy";
 import { Button } from "@/components/ui/button";
+import Script from "next/script";
 import { CheckCircle2 } from "lucide-react";
-import { useRazorpayPayment } from "@/hooks/useRazorpayPayment";
 
 type FormState = {
   name: string;
@@ -133,8 +133,6 @@ export function Hero() {
     return isValid;
   };
 
-  const { initiatePayment } = useRazorpayPayment();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -142,19 +140,78 @@ export function Hero() {
     
     setIsSubmitting(true);
     
-    // Initiate Razorpay Payment after validation
-    initiatePayment(
-      (response) => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        console.log("Payment successful, form data:", formData, response);
-      },
-      (error) => {
-        setIsSubmitting(false);
-        console.error("Payment failed", error);
-        alert("Payment failed or was cancelled. Please try again.");
+    try {
+      const res = await fetch("/api/create-order", {
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create order");
       }
-    );
+
+      const data = await res.json();
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: data.amount,
+        currency: data.currency,
+        name: "DoCourseOnline",
+        description: "Digital Marketing Master Class Registration",
+        order_id: data.order_id,
+        prefill: {
+          name: formData.name,
+          contact: formData.phone,
+        },
+        handler: async function (response: any) {
+          try {
+            const verifyRes = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+              }),
+            });
+
+            const verifyData = await verifyRes.json();
+            if (verifyData.success) {
+              setIsSuccess(true);
+              console.log("Payment successful, form data:", formData, response);
+            } else {
+              alert("Payment verification failed.");
+            }
+          } catch (err) {
+            alert("Payment verification error.");
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+        modal: {
+          ondismiss: function () {
+            setIsSubmitting(false);
+          },
+        },
+        theme: {
+          color: "#E6007A",
+        },
+      };
+
+      const rzp = new (window as any).Razorpay(options);
+      
+      rzp.on("payment.failed", function () {
+        alert("Payment failed — no amount was deducted. Please try again.");
+        setIsSubmitting(false);
+      });
+
+      rzp.open();
+    } catch (err: any) {
+      console.error(err);
+      alert("An unexpected error occurred. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = (field: keyof FormState) => `w-full px-3 py-2 text-sm bg-transparent border rounded-lg text-white placeholder:text-white/50 focus:outline-none transition-colors ${
@@ -164,7 +221,8 @@ export function Hero() {
   }`;
 
   return (
-    <section id="register" ref={containerRef} className="relative pt-24 pb-16 lg:pt-40 lg:pb-28 overflow-hidden bg-surface-dark text-white">
+    <section id="register" ref={containerRef} className="relative pt-16 pb-16 lg:pt-16 lg:pb-28 overflow-hidden bg-surface-dark text-white">
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-surface-dark to-surface-dark pointer-events-none"></div>
       
       <div className="container mx-auto px-5 sm:px-6 max-w-7xl relative z-10">
@@ -213,7 +271,7 @@ export function Hero() {
               <img 
                 src="/mentor.png" 
                 alt="" 
-                className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-none lg:w-[115%] max-h-[380px] sm:max-h-[450px] lg:max-h-[500px] h-auto object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                className="w-full max-w-[420px] sm:max-w-[550px] lg:max-w-none lg:w-[130%] max-h-[500px] sm:max-h-[600px] lg:max-h-[700px] h-auto object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}

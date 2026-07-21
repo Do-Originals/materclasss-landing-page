@@ -30,13 +30,13 @@ export function Mentor() {
             <div key={index} className="glass-card rounded-3xl p-6 md:p-8 flex flex-col items-center gap-6 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-2 transition-all duration-500 text-center">
               
               <div className="w-full max-w-[280px] shrink-0">
-                <div className="relative aspect-square rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-white/50 group">
+                <div className="relative aspect-square rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-white/50 group bg-surface-dark/5">
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                   <Image 
                     src={mentor.image} 
                     alt={mentor.name}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
               </div>
@@ -51,7 +51,7 @@ export function Mentor() {
           ))}
         </div>
         
-        <div className="pt-16 text-center">
+        <div className="pt-16 flex justify-center">
           <CheckoutButton 
             className="animate-cta-shake animate-cta-flash bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]" 
             text="Register Now — ₹4999" 
