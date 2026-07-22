@@ -112,7 +112,7 @@ export function Hero() {
             </p>
             
             <p className="text-white/70 max-w-2xl leading-relaxed text-xs sm:text-sm">
-              {siteContent.registrationHook.text}
+              बऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Digital Marketing शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.
             </p>
             
             <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4 max-w-lg">
