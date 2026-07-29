@@ -100,7 +100,7 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-magenta opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-magenta"></span>
               </span>
-              Live · 3 Days · ₹999/-
+              Live · 3 Days · <span className="line-through text-white/50 mr-1">₹999</span> ₹499/-
             </div>
             
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight lg:leading-tight font-heading">
@@ -126,13 +126,13 @@ export function Hero() {
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner col-span-2">
                  <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Price</span>
-                 <span className="text-white font-semibold text-base sm:text-lg">₹999 incl. GST</span>
+                 <span className="text-white font-semibold text-base sm:text-lg"><span className="line-through text-white/50 mr-2">₹999</span>₹499 incl. GST</span>
               </div>
             </div>
 
             <div className="pt-4 flex justify-center lg:justify-center">
               <Button 
-                onClick={() => setSelectedCourse({name: "Social Media Management Course", price: 999})}
+                onClick={() => setSelectedCourse({name: "Social Media Management Course", price: 499})}
                 className="w-full sm:w-auto px-8 py-4 sm:py-5 text-sm sm:text-base font-semibold bg-brand-magenta hover:bg-brand-magenta/90 text-white rounded-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.4)] hover:shadow-[0_0_30px_rgba(230,0,122,0.6)] border-0 relative overflow-hidden"
               >
                 {siteContent.hero.cta}
