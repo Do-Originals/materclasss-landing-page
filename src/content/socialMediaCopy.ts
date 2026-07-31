@@ -6,7 +6,8 @@ export const socialMediaContent = {
     showPriceInCta: false
   },
   hero: {
-    eyebrow: "Live · 10 Sessions · ₹499/-",
+    duration: "3 Days",
+    eyebrow: "Live · 3 Days · ₹499/-",
     headline: "Social Media Management Masterclass",
     subheadline: "Learn how to build, manage, and scale brands on social media",
     cta: "Book Your Seat",
@@ -26,7 +27,7 @@ export const socialMediaContent = {
     text: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या\n\nबऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Digital Marketing शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.",
   },
   syllabus: {
-    heading: "What you will get\nया 10 sessions मधून काय?",
+    heading: "What you will get\nया 3 Days मधून काय?",
     sessions: [
       { id: 1, title: "Introduction to Social Media Management & Branding" },
       { id: 2, title: "Platform Specific Strategies (IG, FB, YT, LI)" },
@@ -114,7 +115,7 @@ export const socialMediaContent = {
   faq: {
     heading: "Frequently Asked Questions",
     questions: [
-      { q: "Is the course live or recorded?", a: "The course consists of 10 fully interactive LIVE sessions, ensuring you get real-time guidance and can ask questions on the spot." },
+      { q: "Is the course live or recorded?", a: "The course consists of 3 fully interactive LIVE days, ensuring you get real-time guidance and can ask questions on the spot." },
       { q: "What is the schedule?", a: "Sessions are conducted on weekends (Saturday & Sunday) during evening hours so that working professionals and students can easily attend." },
       { q: "Is there a refund policy?", a: "We focus completely on delivering value. If you attend the first two sessions and don't find it valuable, we offer a no-questions-asked 100% refund." },
       { q: "Is this beginner-friendly?", a: "Absolutely! We start from the absolute basics and scale up to advanced strategies, making it perfect for both beginners and intermediate marketers." },

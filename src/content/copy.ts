@@ -14,6 +14,7 @@ export const siteContent = {
     showPriceInCta: true
   },
   hero: {
+    duration: "10 Sessions",
     eyebrow: "Live · 10 Sessions · ₹4999/-",
     headline: "Digital Marketing Master Class",
     subheadline: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या",
