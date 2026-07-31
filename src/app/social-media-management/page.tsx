@@ -15,6 +15,16 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Social Media Management Masterclass | Do Originals",
   description: "Learn how to build, manage, and scale brands on social media with our live 10-session masterclass.",
+  openGraph: {
+    title: "Social Media Management Masterclass | Do Originals",
+    description: "Learn how to build, manage, and scale brands on social media with our live 10-session masterclass.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Social Media Management Masterclass | Do Originals",
+    description: "Learn how to build, manage, and scale brands on social media with our live 10-session masterclass.",
+  }
 };
 
 export default function SocialMediaManagementPage() {
