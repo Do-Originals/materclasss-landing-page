@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     let amount = 499900;
     if (body.amount) {
       amount = parseInt(body.amount, 10);
-      if (amount !== 499900 && amount !== 49900) {
+      if (amount !== 499900) {
         amount = 499900; // fallback to default if invalid
       }
     }

@@ -115,7 +115,7 @@ export function RegistrationModal({ course, onClose }: RegistrationModalProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: course ? course.price * 100 : 49900 }),
+        body: JSON.stringify({ amount: course ? course.price * 100 : 499900 }),
       });
 
       if (!res.ok) throw new Error("Failed to create order");
@@ -299,17 +299,9 @@ export function RegistrationModal({ course, onClose }: RegistrationModalProps) {
                   ) : (
                     <div className="flex items-center justify-center gap-2">
                       <span>Pay Now</span>
-                      {course && course.price === 499 ? (
-                        <div className="flex items-center gap-1.5 ml-1">
-                          <span className="line-through text-white/60 text-sm font-medium">₹999</span>
-                          <span className="text-lg font-bold">₹499</span>
-                          <span className="bg-yellow-400 text-black text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-wider ml-1 animate-pulse">Offer</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-1.5 ml-1">
-                          <span className="text-lg font-bold">₹{course ? course.price : 499}</span>
-                        </div>
-                      )}
+                      <div className="flex items-center gap-1.5 ml-1">
+                        <span className="text-lg font-bold">₹{course ? course.price : 4999}</span>
+                      </div>
                     </div>
                   )}
                 </Button>

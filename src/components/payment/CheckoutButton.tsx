@@ -24,7 +24,7 @@ export function CheckoutButton({
         <span>{text}</span>
       </Button>
       <RegistrationModal 
-        course={isModalOpen ? { name: "Digital Marketing Master Class", price: 499 } : null} 
+        course={isModalOpen ? { name: "Digital Marketing Master Class", price: 4999 } : null} 
         onClose={() => setIsModalOpen(false)} 
       />
     </div>

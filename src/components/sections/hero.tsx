@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { siteContent } from "@/content/copy";
 import { Button } from "@/components/ui/button";
-import Script from "next/script";
 import { RegistrationModal } from "@/components/payment/RegistrationModal";
+import { Clock, Monitor, IndianRupee } from "lucide-react";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-  const leftContentRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   const [selectedCourse, setSelectedCourse] = useState<{name: string, price: number} | null>(null);
 
@@ -18,20 +18,22 @@ export function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
       
-      if (leftContentRef.current) {
-        tl.fromTo(
-          leftContentRef.current.children,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }
-        );
+      // Subtle background animation
+      if (backgroundRef.current) {
+        gsap.to(backgroundRef.current, {
+          opacity: 0.6,
+          duration: 4,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut"
+        });
       }
-      
-      if (formRef.current) {
+
+      if (contentRef.current) {
         tl.fromTo(
-          formRef.current,
-          { opacity: 0, x: 30 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.6"
+          contentRef.current.children,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power4.out" }
         );
       }
     }, containerRef);
@@ -40,104 +42,84 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="register" ref={containerRef} className="relative pt-24 pb-16 lg:pt-32 lg:pb-28 overflow-hidden bg-surface-dark text-white">
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-surface-dark to-surface-dark pointer-events-none"></div>
+    <section id="register" ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#050505] text-white">
+      {/* Premium Minimalist Background Glow */}
+      <div 
+        ref={backgroundRef}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-brand-magenta/15 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none opacity-40 mix-blend-screen"
+      />
       
-      <div className="container mx-auto px-5 sm:px-6 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
+        <div ref={contentRef} className="flex flex-col items-center text-center space-y-10">
           
-          {/* Left Side - Digital Marketing Course */}
-          <div ref={leftContentRef} className="space-y-8 lg:border-r border-b lg:border-b-0 border-white/20 pb-12 lg:pb-0 lg:pr-12">
-            <div className="inline-flex items-center rounded-full border border-brand-magenta/50 bg-brand-magenta/10 px-4 py-1.5 text-sm font-medium text-brand-magenta shadow-[0_0_15px_rgba(230,0,122,0.5)] animate-pulse">
-              <span className="relative flex h-2.5 w-2.5 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-magenta opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-magenta"></span>
-              </span>
-              {siteContent.hero.eyebrow}
-            </div>
-            
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight lg:leading-tight font-heading">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs sm:text-sm font-medium text-white/80 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-magenta opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-magenta"></span>
+            </span>
+            {siteContent.hero.eyebrow}
+          </div>
+          
+          {/* Headlines */}
+          <div className="space-y-6 max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] font-heading bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
               {siteContent.hero.headline}
             </h1>
             
-            <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed">
               {siteContent.hero.subheadline}
             </p>
-            
-            <p className="text-white/70 max-w-2xl leading-relaxed text-xs sm:text-sm">
-              {siteContent.registrationHook.text}
-            </p>
-            
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4 max-w-lg">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner">
-                <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Time</span>
-                <span className="text-white font-semibold text-sm sm:text-lg">10 Sessions</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner relative overflow-hidden">
-                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Online</span>
-                 <span className="text-white font-semibold text-sm sm:text-lg">Live 1:1 Session</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner col-span-2">
-                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Price</span>
-                 <span className="text-white font-semibold text-base sm:text-lg">₹4999 incl. GST</span>
+          </div>
+          
+          {/* Subtle Details Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 py-5 px-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm w-full sm:w-auto">
+            <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+              <Clock className="w-5 h-5 text-brand-magenta opacity-80" />
+              <div className="text-left">
+                <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">Duration</p>
+                <p className="text-sm font-medium text-white/90">10 Sessions</p>
               </div>
             </div>
-
-            <div className="pt-4 flex justify-center lg:justify-center">
-              <Button 
-                onClick={() => setSelectedCourse({name: "Digital Marketing Master Class", price: 4999})}
-                className="w-full sm:w-auto px-8 py-4 sm:py-5 text-sm sm:text-base font-semibold bg-brand-magenta hover:bg-brand-magenta/90 text-white rounded-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.4)] hover:shadow-[0_0_30px_rgba(230,0,122,0.6)] border-0 relative overflow-hidden"
-              >
-                {siteContent.hero.cta}
-              </Button>
+            
+            <div className="hidden sm:block w-px h-8 bg-white/10"></div>
+            <div className="block sm:hidden h-px w-full bg-white/10"></div>
+            
+            <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+              <Monitor className="w-5 h-5 text-brand-magenta opacity-80" />
+              <div className="text-left">
+                <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">Format</p>
+                <p className="text-sm font-medium text-white/90">Live 1:1 Online</p>
+              </div>
+            </div>
+            
+            <div className="hidden sm:block w-px h-8 bg-white/10"></div>
+            <div className="block sm:hidden h-px w-full bg-white/10"></div>
+            
+            <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+              <IndianRupee className="w-5 h-5 text-brand-magenta opacity-80" />
+              <div className="text-left">
+                <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">Investment</p>
+                <p className="text-sm font-medium text-white/90">₹4999 (incl. GST)</p>
+              </div>
             </div>
           </div>
+          
+          {/* Hook */}
+          <p className="text-white/50 max-w-xl mx-auto text-sm font-light leading-relaxed">
+            {siteContent.registrationHook.text}
+          </p>
 
-          {/* Right Side - Social Media Management Course */}
-          <div className="space-y-8 pt-12 lg:pt-0 lg:pl-12" ref={formRef}>
-            <div className="inline-flex items-center rounded-full border border-brand-magenta/50 bg-brand-magenta/10 px-4 py-1.5 text-sm font-medium text-brand-magenta shadow-[0_0_15px_rgba(230,0,122,0.5)] animate-pulse">
-              <span className="relative flex h-2.5 w-2.5 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-magenta opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-magenta"></span>
-              </span>
-              Live · 3 Days · <span className="line-through text-white/50 mr-1">₹999</span> ₹499/-
-            </div>
-            
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight lg:leading-tight font-heading">
-              Social Media Management Course
-            </h1>
-            
-            <p className="text-base sm:text-lg lg:text-xl text-white/90 font-medium">
-              {siteContent.hero.subheadline}
-            </p>
-            
-            <p className="text-white/70 max-w-2xl leading-relaxed text-xs sm:text-sm">
-              बऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Digital Marketing शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.
-            </p>
-            
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4 max-w-lg">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner">
-                <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Time</span>
-                <span className="text-white font-semibold text-sm sm:text-lg">3 Days</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner relative overflow-hidden">
-                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Online</span>
-                 <span className="text-white font-semibold text-sm sm:text-lg">Live 1:1 Session</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex flex-col justify-center shadow-inner col-span-2">
-                 <span className="text-white/60 text-[10px] sm:text-xs uppercase font-medium tracking-wider mb-0.5 sm:mb-1">Price</span>
-                 <span className="text-white font-semibold text-base sm:text-lg"><span className="line-through text-white/50 mr-2">₹999</span>₹499 incl. GST</span>
-              </div>
-            </div>
-
-            <div className="pt-4 flex justify-center lg:justify-center">
-              <Button 
-                onClick={() => setSelectedCourse({name: "Social Media Management Course", price: 499})}
-                className="w-full sm:w-auto px-8 py-4 sm:py-5 text-sm sm:text-base font-semibold bg-brand-magenta hover:bg-brand-magenta/90 text-white rounded-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.4)] hover:shadow-[0_0_30px_rgba(230,0,122,0.6)] border-0 relative overflow-hidden"
-              >
+          {/* CTA */}
+          <div className="pt-4">
+            <Button 
+              onClick={() => setSelectedCourse({name: "Digital Marketing Master Class", price: 4999})}
+              className="group relative h-14 sm:h-16 px-10 sm:px-12 text-base sm:text-lg font-medium bg-white text-black hover:bg-white/90 rounded-full transition-all hover:scale-105 active:scale-95 border-0 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]"
+            >
+              <span className="relative z-10 flex items-center gap-2">
                 {siteContent.hero.cta}
-              </Button>
-            </div>
+              </span>
+            </Button>
           </div>
           
         </div>
