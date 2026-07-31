@@ -27,7 +27,7 @@ export const socialMediaContent = {
     text: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या\n\nबऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Digital Marketing शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.",
   },
   syllabus: {
-    heading: "What you will get\nया 3 Days मधून काय?",
+    heading: "What you will get",
     sessions: [
       { id: 1, title: "Introduction to Social Media Management & Branding" },
       { id: 2, title: "Platform Specific Strategies (IG, FB, YT, LI)" },

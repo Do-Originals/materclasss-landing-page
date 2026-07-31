@@ -89,7 +89,7 @@ export function Hero({ content }: { content: SiteContentType }) {
               <Monitor className="w-5 h-5 text-brand-magenta opacity-80" />
               <div className="text-left">
                 <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">Format</p>
-                <p className="text-sm font-medium text-white/90">Live 1:1 Online</p>
+                <p className="text-sm font-medium text-white/90">Live Interactive Online</p>
               </div>
             </div>
             
