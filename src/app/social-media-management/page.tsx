@@ -10,6 +10,13 @@ import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
 import { socialMediaContent } from "@/content/socialMediaCopy";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Social Media Management Masterclass | Do Originals",
+  description: "Learn how to build, manage, and scale brands on social media with our live 10-session masterclass.",
+};
+
 export default function SocialMediaManagementPage() {
   return (
     <main className="flex min-h-screen flex-col">
