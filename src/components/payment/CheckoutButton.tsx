@@ -7,11 +7,13 @@ import { RegistrationModal } from "./RegistrationModal";
 interface CheckoutButtonProps {
   className?: string;
   text?: string;
+  course?: { name: string, price: number };
 }
 
 export function CheckoutButton({ 
   className = "", 
-  text = "Register Now" 
+  text = "Register Now",
+  course = { name: "Digital Marketing Master Class", price: 4999 }
 }: CheckoutButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,7 +26,7 @@ export function CheckoutButton({
         <span>{text}</span>
       </Button>
       <RegistrationModal 
-        course={isModalOpen ? { name: "Digital Marketing Master Class", price: 4999 } : null} 
+        course={isModalOpen ? course : null} 
         onClose={() => setIsModalOpen(false)} 
       />
     </div>

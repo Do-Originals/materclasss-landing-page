@@ -1,17 +1,17 @@
 "use client";
 
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export function Certificate() {
+export function Certificate({ content }: { content: SiteContentType }) {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center mb-12">
           <div className="relative inline-block mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-surface-dark font-heading relative z-10">
-              {siteContent.certificate.heading}
+              {content.certificate.heading}
             </h2>
             <svg 
               className="absolute -inset-x-6 -inset-y-4 w-[calc(100%+3rem)] h-[calc(100%+2rem)] text-brand-magenta pointer-events-none"
@@ -33,14 +33,14 @@ export function Certificate() {
             </svg>
           </div>
           <p className="text-lg text-surface-dark/80">
-            {siteContent.certificate.description}
+            {content.certificate.description}
           </p>
         </div>
 
         <div className="bg-bg rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm max-w-3xl mx-auto">
           <div className="relative aspect-[4/3] md:aspect-[3/2] w-full rounded-xl overflow-hidden border border-gray-200 shadow-inner">
             <Image 
-              src={siteContent.certificate.image} 
+              src={content.certificate.image} 
               alt="Course Certificate Mockup"
               fill
               className="object-contain p-2"
@@ -48,7 +48,7 @@ export function Certificate() {
           </div>
           <div className="mt-6 text-center">
             <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Issued By</p>
-            <p className="text-xl font-bold text-surface-dark mt-1">{siteContent.certificate.issuer}</p>
+            <p className="text-xl font-bold text-surface-dark mt-1">{content.certificate.issuer}</p>
           </div>
         </div>
       </div>

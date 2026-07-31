@@ -3,12 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { CheckoutButton } from "@/components/payment/CheckoutButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Syllabus() {
+export function Syllabus({ content }: { content: SiteContentType }) {
   const containerRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
@@ -37,8 +37,8 @@ export function Syllabus() {
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold whitespace-pre-line font-heading mb-6">
-            <span className="text-white">{siteContent.syllabus.heading.split(' ')[0]}</span>{' '}
-            <span className="text-gradient">{siteContent.syllabus.heading.split(' ').slice(1).join(' ')}</span>
+            <span className="text-white">{content.syllabus.heading.split(' ')[0]}</span>{' '}
+            <span className="text-gradient">{content.syllabus.heading.split(' ').slice(1).join(' ')}</span>
           </h2>
           <div className="mt-4 w-32 h-1.5 bg-gradient-to-r from-gradient-start to-gradient-end mx-auto rounded-full opacity-80" />
         </div>
@@ -54,7 +54,7 @@ export function Syllabus() {
           />
 
           <div className="space-y-8">
-            {siteContent.syllabus.sessions.map((session, idx) => (
+            {content.syllabus.sessions.map((session, idx) => (
               <div key={session.id} className={`relative flex items-center gap-6 md:justify-between group ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                 
                 {/* Center Node */}
@@ -79,7 +79,8 @@ export function Syllabus() {
 
         <div className="mt-16 text-center relative z-20">
           <CheckoutButton 
-            text="Claim Your Seat"
+            text={content.course.showPriceInCta ? `${content.hero.cta} - ₹${content.course.price}` : content.hero.cta}
+            course={content.course}
             className="animate-cta-shake animate-cta-flash inline-flex bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]"
           />
         </div>

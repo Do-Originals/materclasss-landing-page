@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { Gift } from "lucide-react";
 
-export function Bonuses() {
+export function Bonuses({ content }: { content: SiteContentType }) {
   return (
     <section className="py-24 relative overflow-hidden bg-white border-y border-brand-magenta/10">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-start/5 blur-[120px] rounded-full pointer-events-none" />
@@ -14,13 +14,13 @@ export function Bonuses() {
             <Gift className="w-10 h-10 text-brand-magenta" />
           </div>
           <h2 className="text-3xl md:text-5xl font-bold font-heading mb-4">
-            <span className="text-surface-dark">{siteContent.bonuses.heading.split(' ')[0]}</span>{' '}
-            <span className="text-gradient">{siteContent.bonuses.heading.split(' ').slice(1).join(' ')}</span>
+            <span className="text-surface-dark">{content.bonuses.heading.split(' ')[0]}</span>{' '}
+            <span className="text-gradient">{content.bonuses.heading.split(' ').slice(1).join(' ')}</span>
           </h2>
         </div>
 
         <div className="space-y-4 mb-8">
-          {siteContent.bonuses.items.map((item, idx) => (
+          {content.bonuses.items.map((item, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, x: -20 }}
@@ -44,7 +44,7 @@ export function Bonuses() {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
           <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500"></div>
           <p className="text-xl font-medium opacity-90 mb-2 relative z-10 uppercase tracking-wider">Total Bonus Value</p>
-          <p className="text-5xl md:text-7xl font-bold relative z-10 drop-shadow-md">{siteContent.bonuses.totalValue}</p>
+          <p className="text-5xl md:text-7xl font-bold relative z-10 drop-shadow-md">{content.bonuses.totalValue}</p>
         </div>
       </div>
     </section>

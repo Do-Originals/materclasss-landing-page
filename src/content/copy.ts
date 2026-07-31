@@ -1,4 +1,18 @@
+export type SiteContentType = typeof siteContent & {
+  course: {
+    originalPrice?: number;
+    name: string;
+    price: number;
+    showPriceInCta: boolean;
+  }
+};
+
 export const siteContent = {
+  course: {
+    name: "Digital Marketing Master Class",
+    price: 4999,
+    showPriceInCta: true
+  },
   hero: {
     eyebrow: "Live · 10 Sessions · ₹4999/-",
     headline: "Digital Marketing Master Class",

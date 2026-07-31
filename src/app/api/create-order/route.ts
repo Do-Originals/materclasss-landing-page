@@ -9,11 +9,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     
+    const ALLOWED_PRICES = [499900, 99900, 49900];
     let amount = 499900;
+    
     if (body.amount) {
-      amount = parseInt(body.amount, 10);
-      if (amount !== 499900) {
-        amount = 499900; // fallback to default if invalid
+      const requestedAmount = parseInt(body.amount, 10);
+      if (ALLOWED_PRICES.includes(requestedAmount)) {
+        amount = requestedAmount;
       }
     }
     

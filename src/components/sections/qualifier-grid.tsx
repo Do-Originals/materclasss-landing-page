@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { CheckCircle2 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -23,7 +23,7 @@ const cardVariants: Variants = {
   },
 };
 
-export function QualifierGrid() {
+export function QualifierGrid({ content }: { content: SiteContentType }) {
   return (
     <section className="py-24 relative bg-surface-dark overflow-hidden">
       {/* Decorative dark background elements */}
@@ -33,8 +33,8 @@ export function QualifierGrid() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6">
-            <span className="text-white">{siteContent.qualifierGrid.heading.split(' ')[0]}</span>{' '}
-            <span className="text-gradient">{siteContent.qualifierGrid.heading.split(' ').slice(1).join(' ')}</span>
+            <span className="text-white">{content.qualifierGrid.heading.split(' ')[0]}</span>{' '}
+            <span className="text-gradient">{content.qualifierGrid.heading.split(' ').slice(1).join(' ')}</span>
           </h2>
           <div className="mt-4 w-32 h-1.5 bg-gradient-to-r from-gradient-start to-gradient-end mx-auto rounded-full opacity-80" />
         </div>
@@ -46,7 +46,7 @@ export function QualifierGrid() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {siteContent.qualifierGrid.bullets.map((bullet, idx) => (
+          {content.qualifierGrid.bullets.map((bullet, idx) => (
             <motion.div
               key={idx}
               variants={cardVariants}

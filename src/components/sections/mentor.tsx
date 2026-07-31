@@ -1,4 +1,4 @@
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import Image from "next/image";
 import { Briefcase, Award, Users } from "lucide-react";
 import { CheckoutButton } from "@/components/payment/CheckoutButton";
@@ -9,8 +9,8 @@ const iconMap = {
   users: Users,
 };
 
-export function Mentor() {
-  const { heading, list } = siteContent.mentor;
+export function Mentor({ content }: { content: SiteContentType }) {
+  const { heading, list } = content.mentor;
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -54,7 +54,8 @@ export function Mentor() {
         <div className="pt-16 flex justify-center">
           <CheckoutButton 
             className="animate-cta-shake animate-cta-flash bg-brand-magenta hover:bg-brand-magenta/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(230,0,122,0.3)] hover:shadow-[0_0_30px_rgba(230,0,122,0.5)]" 
-            text="Register Now" 
+            text={content.course.showPriceInCta ? `${content.hero.cta} - ₹${content.course.price}` : content.hero.cta}
+            course={content.course}
           />
         </div>
 

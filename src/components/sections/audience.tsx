@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { GraduationCap, Briefcase, Rocket } from "lucide-react";
 
 const icons = [GraduationCap, Briefcase, Rocket];
 
-export function Audience() {
+export function Audience({ content }: { content: SiteContentType }) {
   return (
     <section className="py-24 relative overflow-hidden bg-white">
       {/* Premium subtle background glow */}
@@ -15,14 +15,14 @@ export function Audience() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6">
-            <span className="text-surface-dark">{siteContent.audience.heading.split(' ')[0]}</span>{' '}
-            <span className="text-gradient">{siteContent.audience.heading.split(' ').slice(1).join(' ')}</span>
+            <span className="text-surface-dark">{content.audience.heading.split(' ')[0]}</span>{' '}
+            <span className="text-gradient">{content.audience.heading.split(' ').slice(1).join(' ')}</span>
           </h2>
           <div className="mt-4 w-32 h-1.5 bg-gradient-to-r from-gradient-start to-gradient-end mx-auto rounded-full opacity-80" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {siteContent.audience.segments.map((segment, idx) => {
+          {content.audience.segments.map((segment, idx) => {
             const Icon = icons[idx];
             return (
               <motion.div

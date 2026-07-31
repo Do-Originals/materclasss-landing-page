@@ -8,20 +8,21 @@ import { Mentor } from "@/components/sections/mentor";
 import { Certificate } from "@/components/sections/certificate";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
+import { siteContent } from "@/content/copy";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Header />
-      <Hero />
-      <QualifierGrid />
-      <Syllabus />
-      <Audience />
+      <Header content={siteContent} />
+      <Hero content={siteContent} />
+      <QualifierGrid content={siteContent} />
+      <Syllabus content={siteContent} />
+      <Audience content={siteContent} />
       <VideoTestimonials />
-      <Mentor />
-      <Certificate />
-      <Faq />
-      <FinalCta />
+      <Mentor content={siteContent} />
+      <Certificate content={siteContent} />
+      <Faq content={siteContent} />
+      <FinalCta content={siteContent} />
     </main>
   );
 }

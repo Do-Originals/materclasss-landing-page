@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { ChevronDown } from "lucide-react";
 
-export function Faq() {
+export function Faq({ content }: { content: SiteContentType }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -13,13 +13,13 @@ export function Faq() {
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-surface-dark font-heading">
-            {siteContent.faq.heading}
+            {content.faq.heading}
           </h2>
           <div className="mt-4 w-24 h-1 bg-gradient-to-r from-gradient-start to-gradient-end mx-auto rounded-full" />
         </div>
 
         <div className="space-y-4">
-          {siteContent.faq.questions.map((faq, idx) => {
+          {content.faq.questions.map((faq, idx) => {
             const isOpen = openIndex === idx;
             
             return (

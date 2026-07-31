@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { siteContent } from "@/content/copy";
+import { SiteContentType } from "@/content/copy";
 import { Button } from "@/components/ui/button";
 import { RegistrationModal } from "@/components/payment/RegistrationModal";
 import { Clock, Monitor, IndianRupee } from "lucide-react";
 
-export function Hero() {
+export function Hero({ content }: { content: SiteContentType }) {
   const containerRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -58,17 +58,17 @@ export function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-magenta opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-magenta"></span>
             </span>
-            {siteContent.hero.eyebrow}
+            {content.hero.eyebrow}
           </div>
           
           {/* Headlines */}
           <div className="space-y-6 max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] font-heading bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-              {siteContent.hero.headline}
+              {content.hero.headline}
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed">
-              {siteContent.hero.subheadline}
+              {content.hero.subheadline}
             </p>
           </div>
           
@@ -100,24 +100,36 @@ export function Hero() {
               <IndianRupee className="w-5 h-5 text-brand-magenta opacity-80" />
               <div className="text-left">
                 <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">Investment</p>
-                <p className="text-sm font-medium text-white/90">₹4999 (incl. GST)</p>
+                <p className="text-xl font-bold text-white leading-none mt-1">
+                  {content.course.originalPrice && (
+                    <span className="line-through text-white/50 text-sm font-medium mr-2">₹{content.course.originalPrice}</span>
+                  )}
+                  ₹{content.course.price} <span className="text-xs text-white/60 font-normal ml-1">(incl. GST)</span>
+                </p>
+                {content.course.originalPrice && (
+                  <div className="mt-1.5">
+                    <span className="inline-block px-2 py-0.5 bg-brand-magenta/10 text-brand-magenta text-[10px] uppercase tracking-wider font-bold rounded border border-brand-magenta/20">
+                      Save {Math.round(((content.course.originalPrice - content.course.price) / content.course.originalPrice) * 100)}%
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
           
           {/* Hook */}
-          <p className="text-white/50 max-w-xl mx-auto text-sm font-light leading-relaxed">
-            {siteContent.registrationHook.text}
+          <p className="text-white/50 max-w-xl mx-auto text-sm font-light leading-relaxed whitespace-pre-wrap">
+            {content.registrationHook.text}
           </p>
 
           {/* CTA */}
           <div className="pt-4">
             <Button 
-              onClick={() => setSelectedCourse({name: "Digital Marketing Master Class", price: 4999})}
+              onClick={() => setSelectedCourse({name: content.course.name, price: content.course.price})}
               className="group relative h-14 sm:h-16 px-10 sm:px-12 text-base sm:text-lg font-medium bg-white text-black hover:bg-white/90 rounded-full transition-all hover:scale-105 active:scale-95 border-0 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]"
             >
               <span className="relative z-10 flex items-center gap-2">
-                {siteContent.hero.cta}
+                {content.course.showPriceInCta ? `${content.hero.cta} - ₹${content.course.price}` : content.hero.cta}
               </span>
             </Button>
           </div>
