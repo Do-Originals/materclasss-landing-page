@@ -1,14 +1,13 @@
 export const socialMediaContent = {
   course: {
-    name: "Social Media Management Masterclass",
-    price: 499,
-    originalPrice: 999,
+    name: "Social Media Growth Masterclass",
+    price: 99,
     showPriceInCta: false
   },
   hero: {
-    duration: "3 Days",
-    eyebrow: "Live · 3 Days · ₹499/-",
-    headline: "Social Media Management Masterclass",
+    duration: "1 day for 2 hrs",
+    eyebrow: "Live · 1 day for 2 hrs · ₹99/-",
+    headline: "Social Media Growth Masterclass",
     subheadline: "Learn how to build, manage, and scale brands on social media",
     cta: "Book Your Seat",
   },
@@ -16,7 +15,7 @@ export const socialMediaContent = {
     heading: "हा कोर्स तुमच्यासाठी का आहे",
     bullets: [
       "Social Media Management च्या In-Demand Skills शिकण्यासाठी",
-      "Instagram, Facebook, LinkedIn आणि YouTube चॅनेल्स Grow करण्यासाठी",
+      "Instagram चॅनेल्स Grow करण्यासाठी",
       "Content Planning, Strategy आणि Creation शिकण्यासाठी",
       "Analytics आणि Insights समजून घेण्यासाठी",
       "Freelance Client Acquisition आणि Management शिकण्यासाठी",
@@ -30,7 +29,7 @@ export const socialMediaContent = {
     heading: "What you will get",
     sessions: [
       { id: 1, title: "Introduction to Social Media Management & Branding" },
-      { id: 2, title: "Platform Specific Strategies (IG, FB, YT, LI)" },
+      { id: 2, title: "Platform Specific Strategies (Instagram)" },
       { id: 3, title: "Content Creation & Curation Techniques" },
       { id: 4, title: "Graphic Design & Video Editing Basics for SMM" },
       { id: 5, title: "Copywriting & Engaging Captions" },
