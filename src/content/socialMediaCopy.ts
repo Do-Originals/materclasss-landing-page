@@ -5,8 +5,8 @@ export const socialMediaContent = {
     showPriceInCta: false
   },
   hero: {
-    duration: "1 day for 2 hrs",
-    eyebrow: "Live · 1 day for 2 hrs · ₹99/-",
+    duration: "2 Hours Only",
+    eyebrow: "Live · 2 Hours Only · ₹99/-",
     headline: "Social Media Growth Masterclass",
     subheadline: "Learn how to build, manage, and scale brands on social media",
     cta: "Book Your Seat",
@@ -23,7 +23,7 @@ export const socialMediaContent = {
     ],
   },
   registrationHook: {
-    text: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या\n\nबऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Digital Marketing शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.",
+    text: "तुमच्या करिअरला फक्त दिशाच नाही तर वेग द्या\n\nबऱ्याच जणांना असं वाटतं कि माझा Business आहे. मी संपूर्ण Social Media Growth शिकून काय करू? त्यांच्यासाठी आम्ही त्यांच्या Business Related कोर्स Design करून Roadmap तयार करायला संपूर्ण मार्गदर्शन करू.",
   },
   syllabus: {
     heading: "What you will get",
