@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     
-    const ALLOWED_PRICES = [499900, 99900, 49900];
+    const ALLOWED_PRICES = [499900, 99900, 49900, 9900];
     let amount = 499900;
     
     if (body.amount) {
